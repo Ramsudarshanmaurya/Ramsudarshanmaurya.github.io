@@ -75,6 +75,62 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================
+   LOADING SPINNER
+   ============================================ */
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader-wrapper.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader {
+  text-align: center;
+}
+
+.loader-inner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #f0f0f0;
+  border-top: 4px solid var(--red);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader-text {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 2px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ============================================
    NAVBAR
    ============================================ */
 .navbar {
@@ -477,7 +533,7 @@ section {
    ABOUT SECTION
    ============================================ */
 .about {
-  background: #fff;
+  background: #f5f1f1;
 }
 
 .about-grid {
@@ -743,65 +799,94 @@ section {
 
 .shop-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
 }
 
 .shop-card {
-  background: #fff;
+  background: var(--bg);
   border-radius: var(--radius);
-  padding: 32px 24px;
-  text-align: center;
-  box-shadow: 0 4px 20px var(--shadow);
-  border-top: 4px solid var(--red);
+  padding: 28px 24px;
+  text-align: left;
+  border: 2px solid #eee;
+  box-shadow: none;
   transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--grad-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: var(--transition);
+}
+
+.shop-card:hover::after {
+  transform: scaleX(1);
 }
 
 .shop-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 50px var(--red-glow);
+  border-color: var(--red-light);
+  background: #fff;
 }
 
-.shop-icon { font-size: 2.5rem; margin-bottom: 14px; }
+.shop-icon { font-size: 2.2rem; margin-bottom: 12px; }
 
 .shop-card h3 {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text);
   margin-bottom: 10px;
 }
 
 .shop-card p {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--text-light);
   margin-bottom: 16px;
   line-height: 1.6;
 }
 
 .shop-price {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 900;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: var(--red);
+  background: #fff0f0;
+  border: 1.5px solid var(--red-light);
   margin-bottom: 18px;
 }
 
 .btn-shop {
-  background: var(--grad-red);
-  color: #fff;
-  padding: 10px 24px;
-  border-radius: 24px;
+  background: transparent;
+  color: var(--red);
+  padding: 0;
+  border-radius: 0;
   font-weight: 700;
   font-size: 0.9rem;
   display: inline-block;
-  box-shadow: 0 4px 15px var(--red-glow);
+  box-shadow: none;
   transition: var(--transition);
+  margin-top: auto;
 }
 
 .btn-shop:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(232,0,0,0.35);
+  transform: none;
+  letter-spacing: 1px;
 }
 
 /* ============================================
@@ -813,32 +898,58 @@ section {
 
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
 }
 
 .course-card {
   background: var(--bg);
   border-radius: var(--radius);
-  padding: 0 0 24px;
+  padding: 24px;
   overflow: hidden;
-  box-shadow: 0 4px 20px var(--shadow);
+  box-shadow: none;
+  border: 2px solid #eee;
   transition: var(--transition);
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--grad-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: var(--transition);
+}
+
+.course-card:hover::after {
+  transform: scaleX(1);
 }
 
 .course-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 18px 45px var(--red-glow);
+  border-color: var(--red-light);
+  background: #fff;
 }
 
 /* Red thumbnail area */
 .course-thumb {
-  height: 130px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   background: var(--grad-red);
+  border-radius: 12px;
+  margin-bottom: 18px;
 }
 
 .play-btn {
@@ -874,51 +985,53 @@ section {
 
 .course-card h3 {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text);
-  margin: 18px 20px 8px;
+  margin: 0 0 8px;
 }
 
 .course-card p {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--text-light);
-  margin: 0 20px 14px;
-  line-height: 1.5;
+  margin: 0 0 14px;
+  line-height: 1.6;
 }
 
 .course-meta {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  margin: 0 20px 16px;
+  margin: 0 0 16px;
 }
 
 .course-meta span {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: 8px;
   background: #fff;
-  color: var(--text-light);
-  border: 1.5px solid #eee;
+  color: var(--text);
+  border: 1.5px solid #e0e0e0;
 }
 
 .btn-course {
   display: inline-block;
-  margin: 0 20px;
-  background: var(--grad-red);
-  color: #fff;
-  padding: 9px 22px;
-  border-radius: 20px;
+  margin: 0;
+  background: transparent;
+  color: var(--red);
+  padding: 0;
+  border-radius: 0;
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   transition: var(--transition);
-  box-shadow: 0 4px 15px var(--red-glow);
+  box-shadow: none;
+  margin-top: auto;
 }
 
 .btn-course:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(232,0,0,0.35);
+  transform: none;
+  letter-spacing: 1px;
 }
 
 /* ============================================
@@ -930,62 +1043,88 @@ section {
 
 .timeline {
   position: relative;
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
-  padding-left: 40px;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
 }
 
 /* Vertical red line */
 .timeline::before {
-  content: '';
-  position: absolute;
-  left: 16px;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  border-radius: 2px;
-  background: var(--grad-red);
+  display: none;
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 36px;
+  margin-bottom: 0;
 }
 
 /* Red dot on timeline */
 .timeline-dot {
-  position: absolute;
-  left: -32px;
-  top: 18px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--red);
-  border: 3px solid #fff;
-  box-shadow: 0 0 12px var(--red-glow);
+  display: none;
 }
 
 .timeline-content {
-  background: #fff;
+  background: var(--bg);
   border-radius: var(--radius);
-  padding: 24px 28px;
-  box-shadow: 0 4px 20px var(--shadow);
-  border-left: 4px solid var(--red);
+  padding: 24px;
+  box-shadow: none;
+  border: 2px solid #eee;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-content::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--grad-red);
+  transform: scaleX(0);
+  transform-origin: left;
   transition: var(--transition);
 }
 
+.timeline-content:hover::after {
+  transform: scaleX(1);
+}
+
 .timeline-content:hover {
-  transform: translateX(8px);
-  box-shadow: 0 10px 35px var(--red-glow);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px var(--red-glow);
+  border-color: var(--red-light);
+  background: #fff;
+}
+
+/* Large desktop: force 4 cards per row */
+@media (min-width: 1280px) {
+  .projects-grid,
+  .shop-grid,
+  .courses-grid,
+  .timeline {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .timeline-year {
-  font-family: var(--font-display);
-  font-size: 0.8rem;
+  display: inline-block;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--red);
-  letter-spacing: 1px;
-  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+  margin-bottom: 12px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: #fff0f0;
+  border: 1.5px solid var(--red-light);
 }
 
 .timeline-content h3 {
@@ -1014,6 +1153,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-top: auto;
 }
 
 .timeline-tags span {
@@ -1267,11 +1407,8 @@ section {
   }
 
   .timeline {
-    padding-left: 30px;
-  }
-
-  .timeline-dot {
-    left: -24px;
+    padding-left: 0;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1285,4 +1422,338 @@ section {
   .shop-grid       { grid-template-columns: 1fr; }
   .courses-grid    { grid-template-columns: 1fr; }
   .about-grid      { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* ================================================
+   1. PARTICLE CANVAS — Hero ke peeche dikhega
+   ================================================ */
+
+/* Canvas hero section ke andar full size cover karega */
+#particleCanvas {
+  position: absolute;  /* hero section ke andar position */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;          /* content ke peeche rahega */
+  pointer-events: none; /* mouse click canvas ko nahi, content ko milega */
+}
+
+/* Hero content particles ke upar aaye */
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ================================================
+   2. FILTER BUTTONS — Projects section
+   ================================================ */
+
+/* Buttons ka wrapper */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;        /* mobile pe wrap ho jaye */
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Ek button ka style */
+.filter-btn {
+  padding: 7px 20px;
+  border: 2px solid #e80000;
+  border-radius: 25px;
+  background: transparent;
+  color: #e80000;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover aur active (selected) button */
+.filter-btn:hover,
+.filter-btn.active {
+  background: #e80000;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(232, 0, 0, 0.3);
+}
+
+
+/* ================================================
+   3. GITHUB STATS SECTION — Separate section
+   ================================================ */
+
+/* Section styling */
+.github-stats {
+  background: #fff;
+  padding: 80px 0;
+}
+
+/* Legacy wrapper (if needed for old refs) */
+.github-stats-section {
+  margin-top: 0;
+  text-align: center;
+}
+
+/* Heading removed — using section-title now */
+.github-stats-section h3 {
+  color: #e80000;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+/* Images ka row */
+.github-stats-row {
+  display: flex;
+  flex-wrap: wrap;        /* mobile pe ek ke neeche ek */
+  justify-content: center;
+  gap: 16px;
+}
+
+/* Har image */
+.github-stats-row img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Manual GitHub Stats Cards */
+.github-manual-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gh-stat-card {
+  background: linear-gradient(145deg, hsl(134, 50%, 90%), #e4f1ae);
+  border: 2px solid #e80000;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(238, 7, 7, 0.868);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gh-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(245, 6, 6, 0.856);
+}
+
+.gh-card-title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: left;
+  font-family: var(--font-display);
+}
+
+/* Stats Grid */
+.gh-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.gh-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  background: rgba(232, 0, 0, 0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(232, 0, 0, 0.2);
+}
+
+.gh-stat-number {
+  color: #e80000;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+
+.gh-stat-label {
+  color: #e90c1b;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* Language Bars */
+.gh-lang-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gh-lang-item {
+  text-align: left;
+}
+
+.gh-lang-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.gh-lang-name {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.gh-lang-percent {
+  color: #8b949e;
+  font-size: 0.9rem;
+}
+
+.gh-lang-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gh-lang-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.gh-fill-cpp {
+  width: 45%;
+  background: #00599c;
+}
+
+.gh-fill-python {
+  width: 25%;
+  background: #3776ab;
+}
+
+.gh-fill-js {
+  width: 15%;
+  background: #f7df1e;
+}
+
+.gh-fill-asm {
+  width: 10%;
+  background: #6e4c13;
+}
+
+.gh-fill-other {
+  width: 5%;
+  background: #858585;
+}
+
+.gh-profile-btn-wrap {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .github-manual-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .gh-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* ================================================
+   4. EDUCATION TIMELINE — Compact size
+   ================================================ */
+
+/* Har item ka gap kam kiya */
+.timeline-item {
+  margin-bottom: 0;
+}
+
+/* Card ka padding kam kiya */
+.timeline-content {
+  padding: 24px;
+}
+
+/* Year badge chhota */
+.timeline-year {
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  margin-bottom: 12px;
+}
+
+/* Title chhota */
+.timeline-content h3 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+/* Organization chhota */
+.timeline-content h4 {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+/* Description chhoti */
+.timeline-content p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* Tags chhote */
+.timeline-tags span {
+  font-size: 0.78rem;
+  padding: 3px 12px;
+}
+
+
+/* ================================================
+   5. MOBILE FIXES — 768px se chhote screens
+   ================================================ */
+@media (max-width: 768px) {
+
+  /* Filter buttons chhote */
+  .filter-btn {
+    padding: 6px 14px;
+    font-size: 0.82rem;
+  }
+
+  /* GitHub stats ek column mein */
+  .github-stats-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .github-stats-row img {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+
+/* ================================================
+   6. MOBILE FIXES — 480px se chhote (small phones)
+   ================================================ */
+@media (max-width: 480px) {
+
+  /* Filter buttons aur chhote */
+  .filter-btn {
+    padding: 5px 11px;
+    font-size: 0.76rem;
+  }
+
+  /* Timeline aur compact */
+  .timeline-content h3 { font-size: 0.90rem; }
+  .timeline-content p  { font-size: 0.76rem; }
 }
