@@ -25,7 +25,7 @@
     ],
     "stats": [
       { "number": 5,  "label": "Projects"       },
-      { "number": 2,  "label": "Years Learning"  },
+      { "number": 1,  "label": "Years Learning"  },
       { "number": 1,  "label": "Research Paper"  },
       { "number": 1,  "label": "Internship"      }
     ]
@@ -170,43 +170,6 @@
     }
   ],
 
-"education": [
-    {
-      "year": "2021 - 2025",
-      "title": "B.Tech — Electronics & Communication",
-      "organization": "AKTU Lucknow | BIT Gorakhpur",
-      "description": "CGPA: 7.4 | Embedded Systems & IoT specialization",
-      "tags": ["ECE", "AKTU", "7.4 CGPA"]
-    },
-    {
-      "year": "Jan 2026 - Present",
-      "title": "Embedded Systems Intern",
-      "organization": "UniConverge Technologies — Noida Sector 62",
-      "description": "STM32 bare metal programming, IoT solutions, embedded firmware.",
-      "tags": ["STM32", "IoT", "Noida"]
-    },
-    {
-      "year": "Nov 2025 - Present",
-      "title": "IoT Training",
-      "organization": "IoT Academy — Noida",
-      "description": "ESP32, MQTT, cloud platforms and industrial IoT protocols.",
-      "tags": ["ESP32", "MQTT", "Cloud"]
-    },
-    {
-      "year": "2024",
-      "title": "Research Publication — IJRPR",
-      "organization": "Vol 6, Issue 4, April 2025",
-      "description": "IoT-based Fall Detection System for elderly people monitoring.",
-      "tags": ["Research", "IJRPR", "IoT"]
-    },
-    {
-      "year": "2023",
-      "title": "🏆 RoboRace 1st Prize",
-      "organization": "BIT Gorakhpur — Technical Fest",
-      "description": "Won 1st prize with autonomous line-following robot.",
-      "tags": ["Robotics", "1st Prize", "BIT"]
-    }
-  ],
   "education": [
     {
       "year": "2021 - 2025",
