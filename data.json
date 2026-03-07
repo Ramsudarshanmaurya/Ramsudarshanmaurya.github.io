@@ -1,0 +1,220 @@
+{
+
+  "about": {
+    "cards": [
+      {
+        "icon": "🔧",
+        "title": "Embedded Engineer",
+        "description": "Bare Metal C/C++ programmer with expertise in STM32, ESP32. Direct register manipulation — No HAL!"
+      },
+      {
+        "icon": "📡",
+        "title": "IoT Developer",
+        "description": "Building smart connected devices using MQTT, BLE, WiFi, LoRa. Sensor to cloud pipeline!"
+      },
+      {
+        "icon": "🤖",
+        "title": "Robotics",
+        "description": "RoboRace 1st Prize winner. Autonomous robots, line followers, obstacle avoiders!"
+      },
+      {
+        "icon": "🔲",
+        "title": "PCB Designer",
+        "description": "Custom PCB design for embedded systems and IoT devices using industry tools!"
+      }
+    ],
+    "stats": [
+      { "number": 5,  "label": "Projects"       },
+      { "number": 2,  "label": "Years Learning"  },
+      { "number": 1,  "label": "Research Paper"  },
+      { "number": 1,  "label": "Internship"      }
+    ]
+  },
+
+  "skills": [
+    {
+      "category": "🖥️ Programming",
+      "items": [
+        { "name": "Bare Metal C",  "level": 95 },
+        { "name": "C++",           "level": 85 },
+        { "name": "Python",        "level": 70 },
+        { "name": "HTML/CSS/JS",   "level": 75 }
+      ]
+    },
+    {
+      "category": "⚡ Microcontrollers",
+      "items": [
+        { "name": "STM32",          "level": 90 },
+        { "name": "ESP32/ESP8266",  "level": 85 },
+        { "name": "Arduino",        "level": 95 },
+        { "name": "Raspberry Pi",   "level": 70 }
+      ]
+    },
+    {
+      "category": "📡 Communication",
+      "items": [
+        { "name": "MQTT",        "level": 85 },
+        { "name": "BLE",         "level": 80 },
+        { "name": "UART/SPI/I2C","level": 90 },
+        { "name": "LoRa/WiFi",   "level": 75 }
+      ]
+    },
+    {
+      "category": "🛠️ Tools",
+      "items": [
+        { "name": "Keil MDK",       "level": 90 },
+        { "name": "STM32CubeIDE",   "level": 85 },
+        { "name": "EasyEDA/KiCad",  "level": 75 },
+        { "name": "Git/GitHub",     "level": 80 }
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "icon": "⚡",
+      "tag": "Bare Metal",
+      "title": "STM32 Bare Metal GPIO",
+      "description": "Complete GPIO programming without HAL. LED blink, button toggle, counter — direct register manipulation.",
+      "tech": ["STM32F103", "Bare Metal C", "Keil MDK"],
+      "link": "https://github.com/Ramsudarshanmaurya/STM32_Bare_Metal",
+      "linkText": "View on GitHub →"
+    },
+    {
+      "icon": "🌡️",
+      "tag": "IoT",
+      "title": "IoT Temperature Monitor",
+      "description": "Real-time temperature and humidity monitoring using ESP32, DHT11, MQTT with cloud dashboard.",
+      "tech": ["ESP32", "MQTT", "DHT11"],
+      "link": "https://github.com/Ramsudarshanmaurya",
+      "linkText": "View on GitHub →"
+    },
+    {
+      "icon": "🤖",
+      "tag": "Robotics",
+      "title": "Autonomous Robot",
+      "description": "RoboRace 1st Prize at BIT Gorakhpur. Autonomous navigation with obstacle avoidance and line following.",
+      "tech": ["Arduino", "Ultrasonic", "L298N"],
+      "link": "https://github.com/Ramsudarshanmaurya",
+      "linkText": "View on GitHub →"
+    },
+    {
+      "icon": "🔲",
+      "tag": "PCB Design",
+      "title": "Custom IoT PCB",
+      "description": "Custom PCB for IoT sensor node with ESP32, power management, and multiple sensor interfaces.",
+      "tech": ["EasyEDA", "ESP32", "SMD"],
+      "link": "https://github.com/Ramsudarshanmaurya",
+      "linkText": "View on GitHub →"
+    },
+    {
+      "icon": "📄",
+      "tag": "Research",
+      "title": "Fall Detection System",
+      "description": "Published in IJRPR journal. IoT-based fall detection system for elderly people monitoring.",
+      "tech": ["IoT", "IJRPR", "Research"],
+      "link": "https://github.com/Ramsudarshanmaurya",
+      "linkText": "View Paper →"
+    },
+    {
+      "icon": "🔜",
+      "tag": "Coming Soon",
+      "title": "More Projects",
+      "description": "UART, Timer, PWM, ADC, I2C, SPI bare metal projects coming soon!",
+      "tech": ["STM32", "Bare Metal", "Soon"],
+      "link": "https://github.com/Ramsudarshanmaurya",
+      "linkText": "Follow GitHub →"
+    }
+  ],
+
+  "courses": [
+    {
+      "label": "STM32",
+      "title": "STM32 Bare Metal",
+      "description": "GPIO, UART, Timer, PWM, ADC without HAL — from scratch!",
+      "status": "Coming Soon",
+      "price": "FREE",
+      "link": "https://www.youtube.com/@Er.RamsudarshanMaurya"
+    },
+    {
+      "label": "IoT",
+      "title": "IoT with ESP32",
+      "description": "WiFi, MQTT, BLE, Cloud integration with ESP32!",
+      "status": "Coming Soon",
+      "price": "FREE",
+      "link": "https://www.youtube.com/@Er.RamsudarshanMaurya"
+    },
+    {
+      "label": "PCB",
+      "title": "PCB Design",
+      "description": "Schematic, Layout, Gerber files using EasyEDA from zero!",
+      "status": "Coming Soon",
+      "price": "FREE",
+      "link": "https://www.youtube.com/@Er.RamsudarshanMaurya"
+    },
+    {
+      "label": "Robotics",
+      "title": "Robotics",
+      "description": "Line follower, obstacle avoider, autonomous robots!",
+      "status": "Coming Soon",
+      "price": "FREE",
+      "link": "https://www.youtube.com/@Er.RamsudarshanMaurya"
+    },
+    {
+      "label": "AI/ML",
+      "title": "AI & Machine Learning",
+      "description": "Neural networks, Python, TensorFlow from scratch!",
+      "status": "Coming Soon",
+      "price": "FREE",
+      "link": "https://www.youtube.com/@Er.RamsudarshanMaurya"
+    }
+  ],
+
+  "education": [
+    {
+      "year": "2021 - 2025",
+      "title": "B.Tech — Electronics & Communication",
+      "organization": "AKTU Lucknow | BIT Gorakhpur",
+      "description": "CGPA: 7.4 | Embedded Systems & IoT specialization",
+      "tags": ["ECE", "AKTU", "7.4 CGPA"]
+    },
+    {
+      "year": "2024 - Present",
+      "title": "Embedded Systems Intern",
+      "organization": "UniConverge Technologies — Noida Sector 62",
+      "description": "STM32 bare metal programming, IoT solutions, embedded firmware.",
+      "tags": ["STM32", "IoT", "Noida"]
+    },
+    {
+      "year": "2024",
+      "title": "IoT Training",
+      "organization": "IoT Academy — Noida",
+      "description": "ESP32, MQTT, cloud platforms and industrial IoT protocols.",
+      "tags": ["ESP32", "MQTT", "Cloud"]
+    },
+    {
+      "year": "2024",
+      "title": "Research Publication — IJRPR",
+      "organization": "Vol 6, Issue 4, April 2025",
+      "description": "IoT-based Fall Detection System for elderly people monitoring.",
+      "tags": ["Research", "IJRPR", "IoT"]
+    },
+    {
+      "year": "2023",
+      "title": "🏆 RoboRace 1st Prize",
+      "organization": "BIT Gorakhpur — Technical Fest",
+      "description": "Won 1st prize with autonomous line-following robot.",
+      "tags": ["Robotics", "1st Prize", "BIT"]
+    }
+  ],
+
+  "contact": {
+    "email":    "ramsudarshanmaurya@gmail.com",
+    "linkedin": "https://linkedin.com/in/ramsudarshanmaurya",
+    "github":   "https://github.com/Ramsudarshanmaurya",
+    "whatsapp": "https://wa.me/918808044818?text=Hi%20Ramsudarshan!%20I%20visited%20your%20portfolio.",
+    "resume":   "https://drive.google.com/drive/folders/1SslKdhRWbyK213nZJpzLBBzx7PcJapPm",
+    "location": "Noida Sector 62, Uttar Pradesh, India"
+  }
+
+}
