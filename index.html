@@ -7,18 +7,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
     <title>Ramsudarshan Maurya | Embedded Systems & IoT Engineer</title>
+    <meta name="title" content="Ramsudarshan Maurya | Embedded Systems & IoT Engineer">
+    <meta name="description" content="Embedded Systems Engineer specializing in STM32 Bare Metal Programming, IoT Solutions, Robotics & PCB Design. RoboRace 1st Prize Winner. Available for freelance projects.">
+    <meta name="keywords" content="Embedded Systems, STM32, IoT, ESP32, Arduino, Bare Metal Programming, PCB Design, Robotics, MQTT, BLE, Embedded Engineer, Ramsudarshan Maurya">
+    <meta name="author" content="Ramsudarshan Maurya">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ramsudarshanmaurya.github.io/">
+    <meta property="og:title" content="Ramsudarshan Maurya | Embedded Systems & IoT Engineer">
+    <meta property="og:description" content="Embedded Systems Engineer specializing in STM32 Bare Metal Programming, IoT Solutions, Robotics & PCB Design.">
+    <meta property="og:image" content="https://ramsudarshanmaurya.github.io/profile.jpeg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ramsudarshanmaurya.github.io/">
+    <meta property="twitter:title" content="Ramsudarshan Maurya | Embedded Systems & IoT Engineer">
+    <meta property="twitter:description" content="Embedded Systems Engineer specializing in STM32 Bare Metal Programming, IoT Solutions, Robotics & PCB Design.">
+    <meta property="twitter:image" content="https://ramsudarshanmaurya.github.io/profile.jpeg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚡</text></svg>">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 </head>
 
 <body>
 
+<!-- Loading Spinner -->
+<div id="loader" class="loader-wrapper" aria-label="Loading content">
+    <div class="loader">
+        <div class="loader-inner"></div>
+        <div class="loader-text">Loading...</div>
+    </div>
+</div>
+
 <!-- ============================================
      NAVBAR
      ============================================ -->
-<nav class="navbar" id="navbar">
-    <img src="profile.jpeg" alt="Logo" class="nav-logo-img">
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <img src="profile.jpeg" alt="Ramsudarshan Maurya - Embedded Systems Engineer" class="nav-logo-img" loading="eager">
     <ul class="nav-links" id="navLinks">
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -27,6 +62,7 @@
         <li><a href="#shop">Shop</a></li>
         <li><a href="#courses">Courses</a></li>
         <li><a href="#education">Education</a></li>
+        <li><a href="#github-stats">GitHub</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="hamburger" id="hamburger">
@@ -42,11 +78,15 @@
      Yahan seedha edit karo
      ============================================ -->
 <section class="hero" id="hero">
+
+    <!-- PARTICLE CANVAS: JS isko animate karega, content ke peeche rahega -->
+    <canvas id="particleCanvas"></canvas>
+
     <div class="hero-content">
 
         <div class="hero-photo-wrapper">
             <div class="photo-ring"></div>
-            <img src="profile.jpeg" alt="Ramsudarshan Maurya" class="hero-photo">
+            <img src="profile.jpeg" alt="Ramsudarshan Maurya - Professional profile photo" class="hero-photo" loading="eager">
             <div class="status-dot"></div>
         </div>
 
@@ -77,7 +117,7 @@
             <div class="hero-socials">
                 <a href="https://linkedin.com/in/ramsudarshanmaurya" target="_blank" rel="noopener noreferrer" class="social-btn">LinkedIn</a>
                 <a href="https://github.com/Ramsudarshanmaurya" target="_blank" rel="noopener noreferrer" class="social-btn">GitHub</a>
-                <a href="mailto:ramsudarshanmaurya@gmail.com" class="social-btn">Email</a>
+                <a href="/cdn-cgi/l/email-protection#3e4c5f534d4b5a5f4c4d565f50535f4b4c475f7e59535f5752105d5153" class="social-btn">Email</a>
             </div>
         </div>
 
@@ -124,6 +164,16 @@
     <div class="container">
         <h2 class="section-title">My <span class="accent">Projects</span></h2>
 
+        <!-- FILTER BUTTONS: In par click karo — category ke hisaab se projects filter honge -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Bare Metal">Bare Metal</button>
+            <button class="filter-btn" data-filter="IoT">IoT</button>
+            <button class="filter-btn" data-filter="Robotics">Robotics</button>
+            <button class="filter-btn" data-filter="PCB Design">PCB Design</button>
+            <button class="filter-btn" data-filter="Research">Research</button>
+        </div>
+
         <!-- JS yahan project cards daalega -->
         <div class="projects-grid"></div>
     </div>
@@ -140,9 +190,17 @@
         <h2 class="section-title">Services & <span class="accent">Shop</span></h2>
         <p class="section-sub">Need a custom embedded project? I can help!</p>
 
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Embedded">Embedded</button>
+            <button class="filter-btn" data-filter="PCB">PCB</button>
+            <button class="filter-btn" data-filter="IoT">IoT</button>
+            <button class="filter-btn" data-filter="Consultation">Consultation</button>
+        </div>
+
         <div class="shop-grid">
 
-            <div class="shop-card">
+            <div class="shop-card" data-type="Embedded">
                 <div class="shop-icon">⚡</div>
                 <h3>Custom Embedded Project</h3>
                 <p>STM32, ESP32, Arduino based custom firmware and hardware for your needs.</p>
@@ -150,7 +208,7 @@
                 <a href="https://wa.me/918808044818?text=Hi!%20I%20need%20a%20custom%20embedded%20project" target="_blank" rel="noopener noreferrer" class="btn btn-shop">Order on WhatsApp</a>
             </div>
 
-            <div class="shop-card">
+            <div class="shop-card" data-type="PCB">
                 <div class="shop-icon">🔲</div>
                 <h3>PCB Design</h3>
                 <p>Custom PCB design — Schematic + Layout + Gerber files for your project.</p>
@@ -158,7 +216,7 @@
                 <a href="https://wa.me/918808044818?text=Hi!%20I%20need%20PCB%20design" target="_blank" rel="noopener noreferrer" class="btn btn-shop">Order on WhatsApp</a>
             </div>
 
-            <div class="shop-card">
+            <div class="shop-card" data-type="IoT">
                 <div class="shop-icon">📡</div>
                 <h3>IoT Solution</h3>
                 <p>Complete IoT — hardware to cloud. Sensor, MQTT, dashboard setup.</p>
@@ -166,7 +224,7 @@
                 <a href="https://wa.me/918808044818?text=Hi!%20I%20need%20IoT%20solution" target="_blank" rel="noopener noreferrer" class="btn btn-shop">Order on WhatsApp</a>
             </div>
 
-            <div class="shop-card">
+            <div class="shop-card" data-type="Consultation">
                 <div class="shop-icon">💬</div>
                 <h3>Consultation</h3>
                 <p>Technical guidance for your embedded/IoT project. 1-hour session.</p>
@@ -188,6 +246,15 @@
         <h2 class="section-title">Free <span class="accent">Courses</span></h2>
         <p class="section-sub">Learn Embedded Systems & IoT for FREE! Subscribe on YouTube!</p>
 
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="STM32">STM32</button>
+            <button class="filter-btn" data-filter="IoT">IoT</button>
+            <button class="filter-btn" data-filter="PCB">PCB</button>
+            <button class="filter-btn" data-filter="Robotics">Robotics</button>
+            <button class="filter-btn" data-filter="AI/ML">AI/ML</button>
+        </div>
+
         <!-- JS yahan course cards daalega -->
         <div class="courses-grid"></div>
     </div>
@@ -202,8 +269,113 @@
     <div class="container">
         <h2 class="section-title">Education & <span class="accent">Experience</span></h2>
 
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Degree">Degree</button>
+            <button class="filter-btn" data-filter="Internship">Internship</button>
+            <button class="filter-btn" data-filter="Training">Training</button>
+            <button class="filter-btn" data-filter="Research">Research</button>
+            <button class="filter-btn" data-filter="Achievement">Achievement</button>
+        </div>
+
         <!-- JS yahan timeline items daalega -->
         <div class="timeline"></div>
+    </div>
+</section>
+
+
+<!-- ============================================
+     GITHUB STATS SECTION
+     ============================================ -->
+<section class="github-stats" id="github-stats">
+    <div class="container">
+        <h2 class="section-title">GitHub <span class="accent">Stats</span></h2>
+        
+        <div class="github-manual-stats">
+            
+            <!-- Stats Card -->
+            <div class="gh-stat-card">
+                <div class="gh-card-title">🔥 GitHub Activity</div>
+                <div class="gh-stats-grid">
+                    <div class="gh-stat-item">
+                        <span class="gh-stat-number">25+</span>
+                        <span class="gh-stat-label">Total Commits</span>
+                    </div>
+                    <div class="gh-stat-item">
+                        <span class="gh-stat-number">8+</span>
+                        <span class="gh-stat-label">Repositories</span>
+                    </div>
+                    <div class="gh-stat-item">
+                        <span class="gh-stat-number">5+</span>
+                        <span class="gh-stat-label">Projects</span>
+                    </div>
+                    <div class="gh-stat-item">
+                        <span class="gh-stat-number">50+</span>
+                        <span class="gh-stat-label">Stars Earned</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Languages Card -->
+            <div class="gh-stat-card">
+                <div class="gh-card-title">💻 Top Languages</div>
+                <div class="gh-lang-bars">
+                    <div class="gh-lang-item">
+                        <div class="gh-lang-info">
+                            <span class="gh-lang-name">C/C++</span>
+                            <span class="gh-lang-percent">45%</span>
+                        </div>
+                        <div class="gh-lang-bar">
+                            <div class="gh-lang-fill gh-fill-cpp"></div>
+                        </div>
+                    </div>
+                    <div class="gh-lang-item">
+                        <div class="gh-lang-info">
+                            <span class="gh-lang-name">Python</span>
+                            <span class="gh-lang-percent">25%</span>
+                        </div>
+                        <div class="gh-lang-bar">
+                            <div class="gh-lang-fill gh-fill-python"></div>
+                        </div>
+                    </div>
+                    <div class="gh-lang-item">
+                        <div class="gh-lang-info">
+                            <span class="gh-lang-name">JavaScript</span>
+                            <span class="gh-lang-percent">15%</span>
+                        </div>
+                        <div class="gh-lang-bar">
+                            <div class="gh-lang-fill gh-fill-js"></div>
+                        </div>
+                    </div>
+                    <div class="gh-lang-item">
+                        <div class="gh-lang-info">
+                            <span class="gh-lang-name">Assembly</span>
+                            <span class="gh-lang-percent">10%</span>
+                        </div>
+                        <div class="gh-lang-bar">
+                            <div class="gh-lang-fill gh-fill-asm"></div>
+                        </div>
+                    </div>
+                    <div class="gh-lang-item">
+                        <div class="gh-lang-info">
+                            <span class="gh-lang-name">Other</span>
+                            <span class="gh-lang-percent">5%</span>
+                        </div>
+                        <div class="gh-lang-bar">
+                            <div class="gh-lang-fill gh-fill-other"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- GitHub Profile Button -->
+        <div class="gh-profile-btn-wrap">
+            <a href="https://github.com/Ramsudarshanmaurya" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                View Full GitHub Profile →
+            </a>
+        </div>
     </div>
 </section>
 
