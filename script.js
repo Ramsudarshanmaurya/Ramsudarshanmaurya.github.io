@@ -3,30 +3,30 @@
    JSON se poori website update hogi!
    ============================================ */
 
-/* ============================================
-   LOADING STATE MANAGEMENT
-   ============================================ */
-const loader = document.getElementById('loader');
+function showDataLoadError(message) {
+  const existing = document.getElementById('data-load-error');
+  if (existing) return;
 
-function hideLoader() {
-  if (loader) {
-    setTimeout(() => {
-      loader.classList.add('hidden');
-    }, 500); // Smooth transition
-  }
-}
+  const errorBar = document.createElement('div');
+  errorBar.id = 'data-load-error';
+  errorBar.textContent = message;
+  errorBar.style.cssText = [
+    'position: fixed',
+    'top: 80px',
+    'left: 50%',
+    'transform: translateX(-50%)',
+    'z-index: 10000',
+    'background: #fff0f0',
+    'color: #b00000',
+    'border: 1px solid #ffb3b3',
+    'border-radius: 12px',
+    'padding: 10px 16px',
+    'font-weight: 700',
+    'font-size: 0.9rem',
+    'box-shadow: 0 6px 20px rgba(232,0,0,0.15)'
+  ].join(';');
 
-function showError(message) {
-  if (loader) {
-    loader.innerHTML = `
-      <div style="text-align: center; color: #e80000; font-family: 'Orbitron', monospace;">
-        <div style="font-size: 3rem; margin-bottom: 20px;">⚠️</div>
-        <h2 style="margin-bottom: 10px;">Failed to Load Content</h2>
-        <p style="color: #666;">${message}</p>
-        <button onclick="location.reload()" style="margin-top: 20px; padding: 12px 30px; background: #e80000; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: 700;">Retry</button>
-      </div>
-    `;
-  }
+  document.body.appendChild(errorBar);
 }
 
 /* ============================================
@@ -56,13 +56,10 @@ fetch('data.json')
     initSkillBars();
     initCounters();
 
-    /* Hide loader after everything is loaded */
-    hideLoader();
-
   })
   .catch(error => {
     console.error('data.json load nahi hua:', error);
-    showError('Please check your internet connection or contact support.');
+    showDataLoadError('Content load nahi hua. Please refresh page or check connection.');
   });
 
 
@@ -227,10 +224,12 @@ function buildCourses(courses) {
 
       grid.innerHTML += `
       <div class="course-card fade-in">
-        <div class="course-thumb" ${thumbStyle}>
-          <div class="play-btn">▶</div>
-          <div class="course-label">${course.label}</div>
-        </div>
+        <a href="${course.link}" target="_blank" rel="noopener noreferrer" class="course-thumb-link">
+          <div class="course-thumb" ${thumbStyle}>
+            <div class="play-btn">▶</div>
+            <div class="course-label">${course.label}</div>
+          </div>
+        </a>
         <h3>${course.title}</h3>
         <p>${course.description}</p>
         <div class="course-meta">
@@ -575,21 +574,34 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const btn     = contactForm.querySelector('button[type="submit"]');
-    btn.textContent = 'Sending... ⏳';
-    btn.disabled    = true;
+    
+    // Get form values
+    const name = document.getElementById('contact-name')?.value || '';
+    const email = document.getElementById('contact-email-input')?.value || '';
+    const subject = document.getElementById('contact-subject')?.value || '';
+    const message = document.getElementById('contact-message')?.value || '';
+    
+    // Create WhatsApp message
+    const whatsappMsg = `Hi Ramsudarshan!%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0ASubject: ${encodeURIComponent(subject)}%0A%0AMessage:%0A${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp with the message
+    window.open(`https://wa.me/918808044818?text=${whatsappMsg}`, '_blank');
+    
+    const btn = contactForm.querySelector('button[type="submit"]');
+    btn.textContent = 'Opening WhatsApp... 💬';
+    btn.disabled = true;
 
     setTimeout(() => {
-      btn.textContent      = 'Message Sent! ✅';
+      btn.textContent = 'Message Sent to WhatsApp! ✅';
       btn.style.background = '#00c853';
       contactForm.reset();
 
       setTimeout(() => {
-        btn.textContent      = 'Send Message 🚀';
+        btn.textContent = 'Send Message 🚀';
         btn.style.background = '';
-        btn.disabled         = false;
+        btn.disabled = false;
       }, 3000);
-    }, 1500);
+    }, 1000);
   });
 }
 
@@ -599,8 +611,11 @@ if (contactForm) {
    ============================================ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (!href || href === '#') return;
+
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
+    const target = document.querySelector(href);
     if (target) {
       window.scrollTo({ top: target.offsetTop - 72, behavior: 'smooth' });
     }
