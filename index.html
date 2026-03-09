@@ -15,7 +15,8 @@
     <meta name="keywords" content="Embedded Systems, STM32, IoT, ESP32, Arduino, Bare Metal Programming, PCB Design, Robotics, MQTT, BLE, Embedded Engineer, Ramsudarshan Maurya">
     <meta name="author" content="Ramsudarshan Maurya">
     <meta name="robots" content="index, follow">
-    <!-- Google Search Console: replace content value with your verification code -->
+    <link rel="canonical" href="https://ramsudarshanmaurya.engineer/">
+    <!-- Add Google Search Console verification meta tag here when token is available -->
     <meta name="google-site-verification" content="PASTE_YOUR_SEARCH_CONSOLE_TOKEN_HERE">
     
     <!-- Open Graph / Facebook -->
@@ -42,14 +43,6 @@
 </head>
 
 <body>
-
-<!-- Loading Spinner -->
-<div id="loader" class="loader-wrapper" aria-label="Loading content">
-    <div class="loader">
-        <div class="loader-inner"></div>
-        <div class="loader-text">Loading...</div>
-    </div>
-</div>
 
 <!-- ============================================
      NAVBAR
@@ -119,7 +112,7 @@
             <div class="hero-socials">
                 <a href="https://linkedin.com/in/ramsudarshanmaurya" target="_blank" rel="noopener noreferrer" class="social-btn">LinkedIn</a>
                 <a href="https://github.com/Ramsudarshanmaurya" target="_blank" rel="noopener noreferrer" class="social-btn">GitHub</a>
-                <a href="/cdn-cgi/l/email-protection#3e4c5f534d4b5a5f4c4d565f50535f4b4c475f7e59535f5752105d5153" class="social-btn">Email</a>
+                <a href="mailto:ramsudarshanmaurya@gmail.com" class="social-btn">Email</a>
             </div>
         </div>
 
@@ -403,7 +396,7 @@
                     <span class="contact-icon">📧</span>
                     <div>
                         <h4>Email</h4>
-                        <a id="contact-email" href="#">Loading...</a>
+                        <a id="contact-email" href="mailto:ramsudarshanmaurya@gmail.com">ramsudarshanmaurya@gmail.com</a>
                     </div>
                 </div>
 
@@ -412,7 +405,7 @@
                     <span class="contact-icon">💼</span>
                     <div>
                         <h4>LinkedIn</h4>
-                        <a id="contact-linkedin" href="#" target="_blank" rel="noopener noreferrer">Loading...</a>
+                        <a id="contact-linkedin" href="https://linkedin.com/in/ramsudarshanmaurya" target="_blank" rel="noopener noreferrer">linkedin.com/in/ramsudarshanmaurya</a>
                     </div>
                 </div>
 
@@ -421,7 +414,7 @@
                     <span class="contact-icon">🐙</span>
                     <div>
                         <h4>GitHub</h4>
-                        <a id="contact-github" href="#" target="_blank" rel="noopener noreferrer">Loading...</a>
+                        <a id="contact-github" href="https://github.com/Ramsudarshanmaurya" target="_blank" rel="noopener noreferrer">github.com/Ramsudarshanmaurya</a>
                     </div>
                 </div>
 
@@ -430,34 +423,37 @@
                     <span class="contact-icon">📍</span>
                     <div>
                         <h4>Location</h4>
-                        <p id="contact-location">Loading...</p>
+                        <p id="contact-location">Noida Sector 62, Uttar Pradesh, India</p>
                     </div>
                 </div>
 
                 <!-- Contact Buttons — id zaroori hain! -->
                 <div class="contact-buttons">
-                    <a id="btn-linkedin"  href="#" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin">LinkedIn</a>
-                    <a id="btn-github-c"  href="#" target="_blank" rel="noopener noreferrer" class="btn btn-github-c">GitHub</a>
-                    <a id="btn-resume"    href="#" target="_blank" rel="noopener noreferrer" class="btn btn-resume">Resume</a>
-                    <a id="btn-whatsapp"  href="#" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">WhatsApp</a>
+                    <a id="btn-linkedin"  href="https://linkedin.com/in/ramsudarshanmaurya" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin">LinkedIn</a>
+                    <a id="btn-github-c"  href="https://github.com/Ramsudarshanmaurya" target="_blank" rel="noopener noreferrer" class="btn btn-github-c">GitHub</a>
+                    <a id="btn-resume"    href="https://drive.google.com/drive/folders/1SslKdhRWbyK213nZJpzLBBzx7PcJapPm" target="_blank" rel="noopener noreferrer" class="btn btn-resume">Resume</a>
+                    <a id="btn-whatsapp"  href="https://wa.me/918808044818?text=Hi%20Ramsudarshan!%20I%20visited%20your%20portfolio." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">WhatsApp</a>
                 </div>
 
             </div>
 
             <!-- Right — Contact Form -->
             <div class="contact-form">
+                                <div class="form-info">
+                                    <p>📱 Your message will be sent via <strong>WhatsApp</strong></p>
+                                </div>
                 <form id="contactForm">
                     <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
+                        <input id="contact-name" name="name" type="text" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
+                        <input id="contact-email-input" name="email" type="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Subject">
+                        <input id="contact-subject" name="subject" type="text" placeholder="Subject">
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <textarea id="contact-message" name="message" placeholder="Your Message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">Send Message 🚀</button>
                 </form>
